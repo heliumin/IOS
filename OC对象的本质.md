@@ -64,6 +64,98 @@ memory write 内存地址 数值
 
 
 
+sizeof是一个运算符，在编译时就已经确定了变量的大小。
+
+
+
+2 OC对象的分类
+
+主要分三类：
+
+instance对象（实例对象）
+
+通过类alloc出来的对象，每次调用alloc都会产生新的instance对象 
+
+NSObject *object2 = [[NSObject alloc] init];
+
+instance对象在内存中存储的信息包括：
+
+isa指针，其他成员变量
+
+
+
+class对象（类对象）
+
+​    // class方法返回的一直是class对象，类对象
+
+​    Class objectClass1 = [object1 class];
+
+​    Class objectClass2 = [object2 class];
+
+​    Class objectClass3 = object_getClass(object1);
+
+​    Class objectClass4 = object_getClass(object2);
+
+​    Class objectClass5 = [NSObject class];
+
+类对象在内存中只有一份，指向同一个地址，因此以上5个类对象的地址是相同的。
+
+class对象在内存中存储的信息主要包括：
+
+isa指针
+
+superclass指针
+
+类的属性信息（@property），类的对象方法信息（instance method）
+
+类的协议信息（protocol），类的成员变量信息（ivar）
+
+
+
+meta-class对象（元类对象）：描述类的对象
+
+​    // meta-class对象，元类对象
+
+​    // 将类对象当做参数传入，获得元类对象
+
+Class objectMetaClass = object_getClass(objectClass5)
+
+每个类中内存中只有一个元类对象
+
+元类对象和类对象的内存结构是一样的，但是用途不一样，在内存中存储的信息主要包括：
+
+isa指针
+
+superclass指针
+
+类的类方法信息（class_method）
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
