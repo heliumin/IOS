@@ -132,6 +132,46 @@ superclass指针
 
 
 
+ 1.Class objc_getClass(const char *aClassName)
+
+ 1> 传入字符串类名
+
+ 2> 返回对应的类对象
+
+ 
+
+ 2.Class object_getClass(id obj)
+
+ 1> 传入的obj可能是instance对象、class对象、meta-class对象
+
+ 2> 返回值
+
+ a) 如果是instance对象，返回class对象
+
+ b) 如果是class对象，返回meta-class对象
+
+ c) 如果是meta-class对象，返回NSObject（基类）的meta-class对象
+
+ 
+
+ 3.- (Class)class、+ (Class)class
+
+ 1> 返回的就是类对象
+
+ \- (Class) {
+
+   return self->isa;
+
+ }
+
+ \+ (Class) {
+
+   return self;
+
+ }
+
+
+
 
 
 
